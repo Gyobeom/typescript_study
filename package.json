@@ -1,0 +1,41 @@
+{
+  "name": "typescript-study",
+  "version": "1.0.0",
+  "description": "TypeScript 클래스 → NestJS TDD 학습 시스템",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "check:stage1": "cross-env TARGET=exercises jest stages/stage1-class-basics/tests",
+    "check:stage2": "cross-env TARGET=exercises jest stages/stage2-contracts/tests",
+    "check:stage3": "cross-env TARGET=exercises jest stages/stage3-generics/tests",
+    "check:stage4": "cross-env TARGET=exercises jest stages/stage4-decorators-di/tests",
+    "check:stage5": "cross-env TARGET=exercises jest stages/stage5-nestjs-project/tests",
+    "check:stage1:answer": "cross-env TARGET=solutions jest stages/stage1-class-basics/tests",
+    "check:stage2:answer": "cross-env TARGET=solutions jest stages/stage2-contracts/tests",
+    "check:stage3:answer": "cross-env TARGET=solutions jest stages/stage3-generics/tests",
+    "check:stage4:answer": "cross-env TARGET=solutions jest stages/stage4-decorators-di/tests",
+    "check:stage5:answer": "cross-env TARGET=solutions jest stages/stage5-nestjs-project/tests",
+    "check:all": "cross-env TARGET=exercises jest",
+    "check:all:answer": "cross-env TARGET=solutions jest",
+    "start:stage5": "ts-node stages/stage5-nestjs-project/solutions/main.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.15",
+    "@nestjs/core": "^10.4.15",
+    "@nestjs/platform-express": "^10.4.15",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^10.4.15",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.5",
+    "@types/supertest": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
