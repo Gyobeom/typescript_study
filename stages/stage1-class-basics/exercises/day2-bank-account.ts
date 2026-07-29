@@ -15,24 +15,33 @@ export class BankAccount {
   constructor(accountNumber: string, initialBalance: number = 0) {
     // 힌트: initialBalance 가 음수면 Error('...') 를 throw 한다.
     //       accountNumber 와 balance 를 초기화한다.
-    throw new Error('TODO: 계좌를 초기화하라 (음수 초기잔액 거부)');
+    this.accountNumber = accountNumber;
+    if (initialBalance < 0)
+      throw new Error("...")
+    this.balance = initialBalance;
   }
 
   // 현재 잔액을 반환한다(읽기 전용 노출).
   getBalance(): number {
     // 힌트: this.balance 를 반환한다.
-    throw new Error('TODO: 잔액을 반환하라');
+    return this.balance
   }
 
   // 입금. amount 는 0보다 커야 한다. 위반 시 Error.
   deposit(amount: number): void {
     // 힌트: amount <= 0 이면 throw. 아니면 balance 에 더한다.
-    throw new Error('TODO: 입금을 처리하라');
+    if (amount <= 0)
+      throw new Error('입금액은 0원보다 작을 수 없습니다.')
+    this.balance += amount
   }
 
   // 출금. amount 는 0보다 크고 잔액 이하여야 한다. 위반 시 Error.
   withdraw(amount: number): void {
     // 힌트: amount <= 0 → throw, amount > balance → Error('잔액 부족') throw.
-    throw new Error('TODO: 출금을 처리하라');
+    if (amount <= 0)
+      throw new Error("출금액은 0원보다 작을 수 없습니다.");
+    if (amount > this.balance)
+      throw new Error("잔액 부족");
+    this.balance -= amount
   }
 }
