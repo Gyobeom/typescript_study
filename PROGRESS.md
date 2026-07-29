@@ -8,7 +8,7 @@
 
 - [x] Day 1: 클래스 선언·생성자 — [일지](journal/2026-07-29-stage1-day1.md)
 - [x] Day 2: 접근제어자 — [일지](journal/2026-07-29-stage1-day2.md)
-- [ ] Day 3: 파라미터 프로퍼티·getter/setter —
+- [x] Day 3: 파라미터 프로퍼티·getter/setter — [일지](journal/2026-07-29-stage1-day3.md)
 - [ ] Day 4: static —
 - [ ] Day 5: 종합 문제 —
 - [ ] **스테이지 완료** (`npm run check:stage1` 통과 확인)
