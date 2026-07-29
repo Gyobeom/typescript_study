@@ -12,6 +12,25 @@
 3. **막혔을 때**: 20분 이상 막히면 `solutions/`의 같은 파일명을 열어 **비교하며** 이해하고, 답안을 덮고 다시 스스로 작성한다.
 4. **마무리 (5분)**: `PROGRESS.md`에 체크하고, 오늘 배운 것을 한 줄로 남긴다.
 
+## Git 워크플로 (브랜치 전략)
+
+| 브랜치 | 용도 | 규칙 |
+|---|---|---|
+| `main` | **문제·학습 자료 원본** (스켈레톤·테스트·노트·답안) | 직접 수정하지 않는다. 자료 갱신·새 문제 추가만 이 브랜치에서 |
+| `study` | **내 풀이 작업 브랜치** | 매일 여기서 exercises를 풀고 커밋한다 |
+
+```bash
+git switch study                          # 학습은 항상 study 브랜치에서
+# ... exercises 풀기 ...
+git add stages/stage1-class-basics/exercises PROGRESS.md
+git commit -m "stage1 day1: Point 클래스 풀이"
+git push                                  # 풀이를 원격 study 브랜치에 백업
+```
+
+- 커밋 단위는 **하루 1커밋** 권장 (메시지: `stageN dayM: <문제명> 풀이`).
+- main에 자료가 갱신되면 `git switch study && git merge main`으로 가져온다.
+- main은 항상 "풀리지 않은 원본" 상태이므로, 처음부터 다시 풀고 싶으면 main의 exercises를 체크아웃하면 된다: `git checkout main -- stages/stageN-*/exercises`
+
 ## 검증 명령
 
 | 명령 | 용도 |
