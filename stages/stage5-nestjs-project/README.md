@@ -71,7 +71,29 @@ NestJS 앱은 **모듈(Module)** 단위로 조립된다. 모듈은 두 가지를
 
 ---
 
-## 4. 진행 방법
+## 4. 학습 노트 (실습 전 30분 이론)
+
+"하루 이론 30분 + 실습 60~90분" 루틴에 맞춘 **일차별 전용 학습 노트**다.
+각 일차 실습을 시작하기 **전에** 해당 노트를 먼저 읽는다. (노트는 답을 노출하지 않는다.)
+
+| Day | 노트 | 핵심 주제 |
+|-----|------|-----------|
+| 1 | [Module / Controller](./notes/day1-module-controller.md) | NestJS 3요소, `@Module`/`@Controller`, 데코레이터 라우팅 |
+| 2 | [Service와 DI](./notes/day2-service-di.md) | `@Injectable`·생성자 주입 (스테이지4 미니 DI와 동일 원리) |
+| 3 | [Repository · DTO](./notes/day3-repository-dto.md) | 인터페이스 추상화, 인젝션 토큰·`useClass`, DTO 수동 검증 |
+| 4 | [예외 처리](./notes/day4-exceptions.md) | HttpException 체계, `NotFoundException`→404 변환 흐름 |
+| 5 | [e2e 테스트](./notes/day5-e2e.md) | `Test.createTestingModule` + supertest, CRUD 종합 검증 |
+
+각 노트 구성: **학습 목표 → 개념 설명 → 실무·채용 연결 → 흔한 실수와 함정 → 오늘 실습과의 연결 → 셀프 체크**.
+
+---
+
+## 5. 진행 방법
+
+각 일차는 **노트 읽기(이론 30분) → 실습(60~90분)** 순서로 진행한다.
+① 위 표의 해당 Day 노트를 읽고 개념을 잡은 뒤,
+② 아래 절차로 실습(exercises 구현·채점)을 진행한다.
+
 
 ### 채점 (테스트 실행)
 

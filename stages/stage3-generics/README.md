@@ -89,7 +89,23 @@ TypeScript가 기본 제공하는 타입 변형기다. 제네릭 클래스와 �
 
 ---
 
-## 3. 일차별 문제 안내
+## 3. 학습 노트 (이론 30분)
+
+실습에 들어가기 **전에** 해당 일차의 학습 노트를 먼저 읽어라. 각 노트는 "이론 30분" 분량으로, 개념 설명 · 실무/채용 연결 · 흔한 실수 · 셀프 체크를 담았다. 노트의 코드 예시는 실습과 **다른 도메인**이라 답이 노출되지 않는다.
+
+| 일차 | 학습 노트 | 이론 핵심 |
+|---|---|---|
+| Day 1 | [`notes/day1-containers.md`](./notes/day1-containers.md) | 제네릭 = 타입을 매개변수로 받기, `any` vs `<T>`, 타입 추론/명시 |
+| Day 2 | [`notes/day2-constraints.md`](./notes/day2-constraints.md) | `T extends` 제약, `keyof`, `T[K]` 인덱스 접근 타입 |
+| Day 3 | [`notes/day3-comparable.md`](./notes/day3-comparable.md) | 제네릭 + 인터페이스, 자기 참조 `Comparable<T>`, 비교 규약 |
+| Day 4 | [`notes/day4-repository.md`](./notes/day4-repository.md) | Repository 패턴, `T extends {id}`, `Map<string,T>`, 반환 타입 설계 |
+| Day 5 | [`notes/day5-utility-repository.md`](./notes/day5-utility-repository.md) | `Partial`/`Pick`/`Omit` 원리·조합, 부분 업데이트 DTO, 시그니처 설계 |
+
+> **하루 루틴**: 이론 30분(노트 읽기) → 실습 60~90분(TODO 구현 → 테스트 초록).
+
+---
+
+## 4. 일차별 문제 안내
 
 | 일차 | 파일 | 주제 | 핵심 |
 |---|---|---|---|
@@ -105,9 +121,12 @@ TypeScript가 기본 제공하는 타입 변형기다. 제네릭 클래스와 �
 
 ---
 
-## 4. 진행 방법
+## 5. 진행 방법
 
 ```bash
+# 0) 먼저 오늘 일차의 학습 노트를 읽는다 (이론 30분)
+#    stages/stage3-generics/notes/<오늘파일명>.md  (예: notes/day1-containers.md)
+
 # 1) 내 구현(exercises) 대상으로 채점 — 처음엔 다 실패(빨강)한다
 npm run check:stage3
 

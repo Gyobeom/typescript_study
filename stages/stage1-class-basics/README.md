@@ -148,9 +148,28 @@ export class UserService {
 
 ---
 
+## 3-1. 학습 노트 (실습 전 30분 이론)
+
+실습 파일을 열기 전에, 그날의 학습 노트를 먼저 읽어라. 노트는 문법과 동작 원리를 처음 배우는 사람 기준으로 설명하고, 실무·채용 연결과 흔한 함정, 셀프 체크까지 담고 있다. **답을 스포일러하지 않으므로** 안심하고 읽어도 된다.
+
+| 일차 | 학습 노트 | 대응 실습 | 핵심 주제 |
+|---|---|---|---|
+| Day 1 | [notes/day1-point.md](notes/day1-point.md) | `day1-point.ts` | 클래스 선언·생성자·메서드, 불변 반환 |
+| Day 2 | [notes/day2-bank-account.md](notes/day2-bank-account.md) | `day2-bank-account.ts` | 접근제어자·캡슐화, `readonly` |
+| Day 3 | [notes/day3-temperature.md](notes/day3-temperature.md) | `day3-temperature.ts` | 파라미터 프로퍼티 축약, getter/setter |
+| Day 4 | [notes/day4-user.md](notes/day4-user.md) | `day4-user.ts` | static 멤버, 정적 팩토리 |
+| Day 5 | [notes/day5-shopping-cart.md](notes/day5-shopping-cart.md) | `day5-shopping-cart.ts` | 종합 도메인 설계, 방어적 복사 |
+
+> **하루 루틴**: `notes/dayN-*.md` 읽기(이론 30분) → `exercises/dayN-*.ts` 구현(실습 60~90분).
+
+---
+
 ## 4. 진행 방법
 
 ```bash
+# 0) 오늘의 학습 노트를 먼저 읽는다 (이론 30분).
+#    notes/dayN-*.ts 를 읽어 개념·함정·셀프체크를 훑고 실습에 들어간다.
+
 # 1) 내 구현(exercises)을 채점한다 — 처음엔 대부분 실패(빨강)한다.
 npm run check:stage1
 

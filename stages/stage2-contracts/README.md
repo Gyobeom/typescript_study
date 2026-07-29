@@ -115,11 +115,31 @@ class NotificationService {
 **구현**한다. 미구현 부분은 `throw new Error('TODO: ...')` 로 되어 있고, 위에 한국어
 힌트 주석이 붙어 있다.
 
+> 실습에 들어가기 전에 아래 **4. 학습 노트**에서 해당 일차의 노트를 먼저 읽는다.
+
 ---
 
-## 4. 진행 방법
+## 4. 학습 노트 (실습 전에 읽기)
+
+각 일차의 실습을 시작하기 **전에** 같은 이름의 학습 노트를 먼저 읽는다.
+노트는 이론 30분 분량으로, 그날 개념의 **동작 원리**와 **채용 연결·흔한 함정**을 담았다
+(실습 답은 노출하지 않는다 — 힌트 수준). 하루 루틴: **노트 읽기(30분) → 실습(60~90분)**.
+
+| 일차 | 학습 노트 | 실습 파일 |
+|---|---|---|
+| 1 | [day1-payment-method.md](notes/day1-payment-method.md) | `exercises/day1-payment-method.ts` |
+| 2 | [day2-report-generator.md](notes/day2-report-generator.md) | `exercises/day2-report-generator.ts` |
+| 3 | [day3-composition.md](notes/day3-composition.md) | `exercises/day3-composition.ts` |
+| 4 | [day4-solid.md](notes/day4-solid.md) | `exercises/day4-solid.ts` |
+| 5 | [day5-contract-design.md](notes/day5-contract-design.md) | `exercises/day5-contract-design.ts` |
+
+---
+
+## 5. 진행 방법
 
 ```bash
+# 0) 오늘 일차의 학습 노트(notes/dayN-*.md)를 먼저 읽는다 (이론 30분).
+
 # 1) 내 구현(exercises)을 채점 — 처음엔 다 실패(빨강)한다. 정상이다.
 npm run check:stage2
 

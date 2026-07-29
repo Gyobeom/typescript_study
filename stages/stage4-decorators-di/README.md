@@ -98,7 +98,22 @@ Reflect.getMetadata('design:paramtypes', UserService);
 
 ---
 
-## 3. 일차별 문제
+## 3. 학습 노트 — 실습 전에 읽는다
+
+"하루 30분 이론 + 60~90분 실습" 루틴에 맞춰, **실습 전에 읽는 일차별 전용 노트**를 `notes/`에 두었다. 각 노트는 개념·실무 연결·흔한 함정·셀프 체크로 구성되며, 실습 답은 노출하지 않는다(힌트 수준). **순서: 노트 읽기 → 실습.**
+
+| 일차 | 노트 | 핵심 주제 |
+|---|---|---|
+| Day 1 | [`notes/day1-class-decorator.md`](./notes/day1-class-decorator.md) | 데코레이터=함수, 시그니처·실행 시점(정의 시 1회), 팩토리 |
+| Day 2 | [`notes/day2-method-decorator.md`](./notes/day2-method-decorator.md) | PropertyDescriptor, 원본 감싸기, `this` 바인딩, AOP |
+| Day 3 | [`notes/day3-metadata.md`](./notes/day3-metadata.md) | `reflect-metadata`, `defineMetadata`/`getMetadata`, `design:paramtypes` |
+| Day 4~5 | [`notes/day4-mini-di-container.md`](./notes/day4-mini-di-container.md) | IoC/DI, 생성자 주입, 재귀 resolve, 싱글턴 캐싱 (이틀 분량) |
+
+> 노트는 레거시(experimental) 데코레이터 기준이며, 각 노트 말미에 TC39 표준 데코레이터와의 차이를 한 줄로 짚어 둔다.
+
+---
+
+## 4. 일차별 문제
 
 | 일차 | 파일 | 주제 | 핵심 |
 |---|---|---|---|
@@ -111,7 +126,9 @@ Reflect.getMetadata('design:paramtypes', UserService);
 
 ---
 
-## 4. 진행 방법
+## 5. 진행 방법
+
+각 일차는 **노트 읽기(약 30분) → 실습(약 60~90분)** 순서로 진행한다. 먼저 해당 일차의 `notes/` 노트를 읽어 개념·함정을 잡은 뒤, `exercises/`의 TODO를 채운다.
 
 ```bash
 # 내 구현(exercises) 채점 — 처음엔 다수 실패가 정상
@@ -124,6 +141,6 @@ npm run check:stage4:answer
 npm run typecheck
 ```
 
-**루틴**: `npm run check:stage4`로 실패를 확인 → `exercises/`의 TODO 구현 → 초록이 될 때까지 반복. **20분 이상 막히면** `solutions/`의 같은 파일명을 열어 **비교**하고, 답을 덮은 뒤 다시 스스로 작성한다.
+**루틴**: 해당 일차 `notes/` 노트 읽기 → `npm run check:stage4`로 실패를 확인 → `exercises/`의 TODO 구현 → 초록이 될 때까지 반복. **20분 이상 막히면** `solutions/`의 같은 파일명을 열어 **비교**하고, 답을 덮은 뒤 다시 스스로 작성한다.
 
 > **주의**: 데코레이터·메타데이터가 필요한 파일과 테스트는 최상단에 `import 'reflect-metadata';`가 있어야 한다. 이 스테이지의 파일들은 이미 포함되어 있으니, 직접 실험 파일을 만들 때도 잊지 말 것.
