@@ -18,13 +18,15 @@ export class User {
   constructor(public readonly name: string, public readonly email: string) {
     // 힌트: this.id 에 User.nextId 를 부여하고 nextId++ / count++ 를 한다.
     //       (id 는 readonly 라 생성자 안에서만 대입 가능)
-    throw new Error('TODO: id 자동 부여 및 카운터 증가');
+    this.id = User.nextId;
+    User.nextId++;
+    User.count++;
   }
 
   // 지금까지 생성된 User 총 개수를 반환하는 정적 메서드.
   static getCount(): number {
     // 힌트: User.count 반환
-    throw new Error('TODO: 총 생성 개수 반환');
+    return User.count;
   }
 
   // "이름 <이메일>" 형태 문자열을 파싱해 User 를 만드는 정적 팩토리.
@@ -33,12 +35,23 @@ export class User {
   static fromString(input: string): User {
     // 힌트: 정규식 /^(.+?)\s*<(.+?)>$/ 로 이름과 이메일을 추출한다.
     //       매치 실패 시 throw. 성공 시 new User(name, email) 반환.
-    throw new Error('TODO: 문자열에서 User 를 생성하는 팩토리');
+    const regex = /^(.+?)\s*<(.+?)>$/;
+    const match = input.match(regex);
+    let name = '';
+    let email = '';
+
+    if (match) {
+      name = match[1].trim();
+      email = match[2].trim();
+    } else {
+      throw new Error()
+    }
+    return new User(name, email)
   }
 
   // 테스트 격리를 위한 카운터 초기화(실무에서는 잘 안 쓰지만 학습용).
   static resetCounter(): void {
-    // 힌트: nextId 를 1, count 를 0 으로 되돌린다.
-    throw new Error('TODO: 카운터 초기화');
+    User.nextId = 1;
+    User.count = 0
   }
 }
