@@ -11,30 +11,31 @@ export class Point {
 
   constructor(x: number, y: number) {
     // 힌트: 생성자 파라미터 x, y 를 this.x, this.y 에 할당한다.
-    throw new Error('TODO: 생성자에서 좌표를 초기화하라');
+    this.x = x;
+    this.y = y;
   }
 
   // 원점(0,0)으로부터의 유클리드 거리를 반환한다. sqrt(x^2 + y^2)
   distanceFromOrigin(): number {
     // 힌트: Math.sqrt 와 ** 연산자(또는 Math.pow)를 사용한다.
-    throw new Error('TODO: 원점까지의 거리를 계산하라');
+    return Math.sqrt((this.x - 0) ** 2 + (this.y - 0) ** 2)
   }
 
   // 다른 점까지의 거리를 반환한다.
   distanceTo(other: Point): number {
     // 힌트: (this.x - other.x), (this.y - other.y) 의 제곱합에 sqrt.
-    throw new Error('TODO: 다른 점까지의 거리를 계산하라');
+    return Math.sqrt((this.x - other.x) ** 2 + (this.y - other.y) ** 2)
   }
 
   // 이 점을 dx, dy 만큼 이동한 "새로운" Point 를 반환한다(원본은 불변).
   translate(dx: number, dy: number): Point {
     // 힌트: 기존 좌표에 dx, dy 를 더한 값으로 new Point(...) 를 만들어 반환한다.
-    throw new Error('TODO: 이동한 새 Point 를 반환하라');
+    return new Point(this.x + dx, this.y + dy)
   }
 
   // "(x, y)" 형식의 문자열로 변환한다. 예: new Point(1, 2).toString() === "(1, 2)"
   toString(): string {
     // 힌트: 템플릿 리터럴 `(${...}, ${...})` 를 사용한다.
-    throw new Error('TODO: 문자열 표현을 반환하라');
+    return `(${this.x}, ${this.y})`
   }
 }

@@ -6,7 +6,7 @@
 
 ## 스테이지 1 — 클래스 기초 (1주차)
 
-- [ ] Day 1: 클래스 선언·생성자 —
+- [x] Day 1: 클래스 선언·생성자 — [일지](journal/2026-07-29-stage1-day1.md)
 - [ ] Day 2: 접근제어자 —
 - [ ] Day 3: 파라미터 프로퍼티·getter/setter —
 - [ ] Day 4: static —
