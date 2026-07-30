@@ -17,9 +17,9 @@ describe('Day1: PaymentMethod 인터페이스와 다형적 구현', () => {
   });
 
   test('MobilePayPayment는 이름과 접두사가 다르지만 같은 계약을 만족한다', () => {
-    const example = new MobilePayPayment();
-    expect(example.name).toBe('mobile-pay');
-    expect(example.pay(5000).receipt).toBe('[모바일페이] 5000원 결제 완료');
+    const mobile = new MobilePayPayment();
+    expect(mobile.name).toBe('mobile-pay');
+    expect(mobile.pay(5000).receipt).toBe('[모바일페이] 5000원 결제 완료');
   });
 
   test('금액이 0 이하이면 어떤 결제 수단도 실패한다', () => {

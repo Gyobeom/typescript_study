@@ -199,7 +199,7 @@ resolve(UserController) → paramTypes=[UserService]
 
 - **NestJS DI가 정확히 이것이다.** `@Module`의 `providers`에 클래스를 등록하면, NestJS 컨테이너가 부팅 때 각 프로바이더를 `design:paramtypes` 기반 재귀 resolve로 조립하고 싱글턴으로 캐싱한다. 오늘 만든 컨테이너의 확장판(스코프·순환 의존 감지·모듈 경계·주입 토큰 추가)일 뿐이다.
 - **면접 단골**: "NestJS DI가 내부적으로 어떻게 동작하나요?"에 대해, 오늘 손으로 만든 경험이 있으면 `@Injectable`의 두 역할, `design:paramtypes`, 재귀 resolve, 싱글턴 스코프를 자기 말로 설명할 수 있다. 이건 암기가 아니라 구현 경험에서 나온다.
-- 국내 테크 기업 **`NestJS AOP 라이브러리`**나 커스텀 데코레이터 글도, 결국 이 컨테이너가 관리하는 인스턴스에 관점을 주입하는 것이므로 오늘 그림 위에 얹힌다.
+- NestJS AOP 라이브러리나 커스텀 데코레이터 글도, 결국 이 컨테이너가 관리하는 인스턴스에 관점을 주입하는 것이므로 오늘 그림 위에 얹힌다.
 
 ---
 

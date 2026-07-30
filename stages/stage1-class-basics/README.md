@@ -118,7 +118,7 @@ class User {
 
 ## 2. 왜 채용에 중요한가
 
-국내 테크 기업·국내 테크 기업급 Node.js/TypeScript 서버 채용은 **NestJS + OOP/TDD 소양**을 본다. 그 실무 코드의 **기본형**이 바로 이번 주 문법이다.
+국내 주요 테크 기업의 Node.js/TypeScript 서버 채용은 **NestJS + OOP/TDD 소양**을 본다. 그 실무 코드의 **기본형**이 바로 이번 주 문법이다.
 
 ```ts
 @Injectable()

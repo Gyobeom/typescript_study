@@ -19,11 +19,11 @@ interface PaymentMethod {
 }
 
 class CreditCardPayment implements PaymentMethod { /* 카드 방식 */ }
-class MobilePayPayment  implements PaymentMethod { /* 국내 테크 기업 방식 */ }
+class MobilePayPayment  implements PaymentMethod { /* 간편결제 방식 */ }
 ```
 
 핵심은 **사용하는 쪽**이다. `checkout(method: PaymentMethod, amount)` 는 카드인지
-모바일페이인지 **모른다**. 오직 `PaymentMethod` 계약만 안다. 그래서 결제 수단을
+간편결제인지 **모른다**. 오직 `PaymentMethod` 계약만 안다. 그래서 결제 수단을
 100개 추가해도 `checkout`은 한 줄도 안 바뀐다. 이게 **다형성**이다.
 
 ### 1-2. 추상 클래스 = 계약 + 부분 구현
@@ -91,7 +91,7 @@ class NotificationService {
 
 ## 2. 채용 연관성
 
-- **국내 테크 기업 우대사항**에 "객체지향 설계에 대한 이해", "TDD" 가 등장한다.
+- 국내 서버 개발 공고의 우대사항에 "객체지향 설계에 대한 이해", "TDD"가 자주 등장한다.
   이번 주 내용(계약·다형성·SOLID·조합)이 그 "OOP 설계 소양"의 핵심이다.
 - **NestJS 전체 구조가 "구현이 아니라 추상에 의존"** 이다. Controller는 Service
   인터페이스에, Service는 Repository 추상에 의존하고, 실제 구현은 DI로 주입된다.

@@ -133,7 +133,7 @@ Reflect.getMetadata('design:paramtypes', Report2);
 ## 실무·채용 연결
 
 - **NestJS `@Injectable()`의 진짜 임무 두 가지**: ① "이 클래스는 컨테이너가 관리 가능"이라는 마커 메타데이터를 심고, ② (자신이 데코레이터이므로) 컴파일러가 그 클래스에 `design:paramtypes`를 방출하도록 **트리거**한다. 즉 `@Injectable()`이 없으면 NestJS는 그 클래스의 생성자 의존성을 못 읽는다. 오늘 배운 개념 3·4가 그 이유다.
-- 실무 기술블로그 **"NestJS 환경에 맞는 Custom Decorator 만들기"**의 파라미터/메서드 데코레이터 부분은 정확히 `Reflect.defineMetadata`/`getMetadata` 왕복 위에 서 있다. 오늘 개념이 그 글의 전제다.
+- 실무 기술블로그의 **NestJS Custom Decorator** 글에서 파라미터/메서드 데코레이터 부분은 정확히 `Reflect.defineMetadata`/`getMetadata` 왕복 위에 서 있다. 오늘 개념이 그런 글의 전제다.
 - 면접에서 "NestJS는 인터페이스로 DI가 안 되고 왜 클래스나 토큰을 써야 하나요?"라는 질문의 답이 아래 함정 2다.
 
 ---
