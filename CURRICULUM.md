@@ -10,7 +10,7 @@
 1. **이론 (30분)**: 해당 스테이지 `notes/` 폴더의 **오늘 일차 학습 노트**를 읽는다 (예: `notes/day1-*.md`). README는 주차 전체 개요·진행법 안내다.
 2. **실습 (60~90분)**: `exercises/`의 오늘 문제 파일을 연다 → `npm run check:stageN`으로 실패하는 테스트를 확인한다 → `// TODO`를 구현한다 → 테스트가 초록이 될 때까지 반복한다.
 3. **막혔을 때**: 20분 이상 막히면 `solutions/`의 같은 파일명을 열어 **비교하며** 이해하고, 답안을 덮고 다시 스스로 작성한다.
-4. **마무리 (5분)**: `journal/_TEMPLATE.md`를 복사해 오늘 일지(`journal/YYYY-MM-DD-stageN-dayM.md`)를 작성하고, `PROGRESS.md` 대시보드에 체크한다.
+4. **마무리 (5분)**: `npm run journal -- stageN dayM 문제명`으로 오늘 일지를 생성해 작성하고, `PROGRESS.md` 대시보드에 체크한다.
 
 ## Git 워크플로 (브랜치 전략)
 

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "journal": "node scripts/new-journal.mjs",
     "check:stage1": "cross-env TARGET=exercises jest stages/stage1-class-basics/tests",
     "check:stage2": "cross-env TARGET=exercises jest stages/stage2-contracts/tests",
     "check:stage3": "cross-env TARGET=exercises jest stages/stage3-generics/tests",
