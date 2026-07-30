@@ -8,3 +8,9 @@ npm-debug.log*
 *.tsbuildinfo
 .env
 .env.local
+
+# 내부 기획/저널 문서 (로컬 전용)
+PRD/
+GOAL.md
+VALIDATION.md
+LOOP.md

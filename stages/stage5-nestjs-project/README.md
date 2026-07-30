@@ -51,8 +51,8 @@ NestJS 앱은 **모듈(Module)** 단위로 조립된다. 모듈은 두 가지를
 
 ## 2. 채용 연관성
 
-- **국내 테크 기업 / 국내 테크 기업** 서버 개발 공고의 기술스택이 **"Node.js, TypeScript, Nest.js, Jest"** 이다.
-- **국내 테크 기업**도 백엔드로 **NestJS**를 채택했다.
+- 국내 주요 테크 기업의 Node.js 서버 공고 기술스택이 **"Node.js, TypeScript, Nest.js, Jest"**로 제시되는 경우가 많다.
+- NestJS는 국내 Node.js 백엔드에서 사실상 표준 프레임워크로 자리잡았다.
 - 이 스테이지는 공고 자격요건 **"TypeScript 기반 서버 개발 경험"**의 시작점이다.
   Module/Controller/Provider와 DI를 손으로 결선하고, Jest로 단위·e2e 테스트를 작성하는 것이
   실무 백엔드 루프의 최소 단위다.

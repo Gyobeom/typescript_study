@@ -1,7 +1,7 @@
 # TypeScript 클래스 → NestJS 5주 커리큘럼
 
 > **대상**: TS 기초 문법(타입, 인터페이스)은 알지만 클래스 설계·활용 경험이 부족한 학습자
-> **목표**: 국내 테크 기업·국내 테크 기업급 Node.js/TypeScript 서버 채용의 실질 요구 — "TypeScript 기반 서버 개발 경험 + OOP/TDD 소양 + NestJS" — 에 도달하는 것
+> **목표**: 국내 주요 테크 기업 Node.js/TypeScript 서버 채용의 실질 요구 — "TypeScript 기반 서버 개발 경험 + OOP/TDD 소양 + NestJS" — 에 도달하는 것
 > **페이스**: 하루 1~2시간 (이론 30분 + 실습 60~90분) × 주 5일 × 5주
 > **방식**: TDD — 각 문제마다 Jest 테스트가 먼저 주어지고, 여러분이 클래스를 구현해 테스트를 통과시킵니다.
 
@@ -86,7 +86,7 @@ git push                                  # 풀이를 원격 study 브랜치에 
 
 ## 스테이지 4 (4주차) — 데코레이터와 DI `stages/stage4-decorators-di`
 
-**학습 목표**: NestJS의 마법처럼 보이는 `@Injectable()`·`@Get()`이 실제로 어떻게 동작하는지 원리를 안다. reflect-metadata로 **미니 DI 컨테이너를 직접 구현**한다. (실무 기술블로그가 다루는 Custom Decorator·IoC 수준의 기초)
+**학습 목표**: NestJS의 마법처럼 보이는 `@Injectable()`·`@Get()`이 실제로 어떻게 동작하는지 원리를 안다. reflect-metadata로 **미니 DI 컨테이너를 직접 구현**한다. (실무 기술블로그들이 다루는 Custom Decorator·IoC 수준의 기초)
 
 | 일차 | 이론 | 실습 |
 |---|---|---|
@@ -115,6 +115,6 @@ git push                                  # 풀이를 원격 study 브랜치에 
 
 ## 5주 이후 로드맵 (참고)
 
-- TypeORM/Prisma로 실제 DB 연결 → 토이 프로젝트를 배포까지 (국내 테크 기업 공고의 "운영 경험" 대비)
-- 실무 기술블로그 "NestJS 환경에 맞는 Custom Decorator 만들기" 읽기 — 4주차 지식으로 읽힌다
-- Jest 테스트를 먼저 쓰는 TDD 사이클로 토이 프로젝트 기능 추가 (국내 테크 기업 우대사항 TDD)
+- TypeORM/Prisma로 실제 DB 연결 → 토이 프로젝트를 배포까지 (채용공고의 "운영 경험" 요건 대비)
+- NestJS Custom Decorator 심화 아티클 읽기 — 4주차 지식으로 읽힌다
+- Jest 테스트를 먼저 쓰는 TDD 사이클로 토이 프로젝트 기능 추가 (우대사항 단골인 TDD)
