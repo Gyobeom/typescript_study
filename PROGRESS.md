@@ -10,8 +10,8 @@
 - [x] Day 2: 접근제어자 — [일지](journal/2026-07-29-stage1-day2.md)
 - [x] Day 3: 파라미터 프로퍼티·getter/setter — [일지](journal/2026-07-29-stage1-day3.md)
 - [x] Day 4: static — [일지](journal/2026-07-29-stage1-day4.md)
-- [ ] Day 5: 종합 문제 —
-- [ ] **스테이지 완료** (`npm run check:stage1` 통과 확인)
+- [x] Day 5: 종합 문제 — [일지](journal/2026-07-30-stage1-day5.md)
+- [x] **스테이지 완료** (`npm run check:stage1` 37/37 통과 — 2026-07-30)
 
 ## 스테이지 2 — 계약 설계 (2주차)
 
