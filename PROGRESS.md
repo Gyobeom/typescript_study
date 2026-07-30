@@ -16,7 +16,7 @@
 ## 스테이지 2 — 계약 설계 (2주차)
 
 - [x] Day 1: interface / implements — [일지](journal/2026-07-30-stage2-day1.md)
-- [ ] Day 2: 추상 클래스 —
+- [x] Day 2: 추상 클래스 — [일지](journal/2026-07-30-stage2-day2.md)
 - [ ] Day 3: 상속 vs 조합 —
 - [ ] Day 4: SOLID —
 - [ ] Day 5: 종합 문제 —

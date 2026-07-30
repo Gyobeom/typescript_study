@@ -58,17 +58,17 @@ export abstract class ReportGenerator {
 export class CsvReportGenerator extends ReportGenerator {
   protected formatHeader(title: string): string {
     // 힌트: `title,${title}` 반환.
-    throw new Error('TODO: CsvReportGenerator.formatHeader 를 구현하라');
+    return `title,${title}`
   }
 
   protected formatRow(row: ReportRow): string {
     // 힌트: `${row.label},${row.value}` 반환.
-    throw new Error('TODO: CsvReportGenerator.formatRow 를 구현하라');
+    return `${row.label},${row.value}`
   }
 
   protected formatFooter(rows: ReportRow[]): string {
     // 힌트: 부모의 this.total(rows)로 합계를 구해 `total,${합계}` 반환.
-    throw new Error('TODO: CsvReportGenerator.formatFooter 를 구현하라');
+    return `total,${this.total(rows)}`
   }
 }
 
@@ -89,17 +89,17 @@ export class CsvReportGenerator extends ReportGenerator {
  */
 export class MarkdownReportGenerator extends ReportGenerator {
   protected formatHeader(title: string): string {
+    return `# ${title}\n| 항목 | 값 |\n| --- | --- |`
     // 힌트: `# ${title}\n| 항목 | 값 |\n| --- | --- |` 반환.
-    throw new Error('TODO: MarkdownReportGenerator.formatHeader 를 구현하라');
   }
 
   protected formatRow(row: ReportRow): string {
     // 힌트: `| ${row.label} | ${row.value} |` 반환.
-    throw new Error('TODO: MarkdownReportGenerator.formatRow 를 구현하라');
+    return `| ${row.label} | ${row.value} |`
   }
 
   protected formatFooter(rows: ReportRow[]): string {
     // 힌트: `| 합계 | ${this.total(rows)} |` 반환.
-    throw new Error('TODO: MarkdownReportGenerator.formatFooter 를 구현하라');
+    return `| 합계 | ${this.total(rows)} |`
   }
 }
