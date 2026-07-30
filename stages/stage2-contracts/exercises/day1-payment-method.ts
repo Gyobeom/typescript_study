@@ -33,7 +33,9 @@ export class CreditCardPayment implements PaymentMethod {
   pay(amount: number): PaymentResult {
     // 힌트: amount가 0 이하이면 success:false, receipt:'결제 금액이 올바르지 않습니다'.
     //       그 외에는 success:true, receipt:`[신용카드] ${amount}원 결제 완료`.
-    throw new Error('TODO: CreditCardPayment.pay 를 구현하라');
+    if (amount <= 0)
+      return { success: false, receipt: '결제 금액이 올바르지 않습니다' }
+    return { success: true, receipt: `[신용카드] ${amount}원 결제 완료` }
   }
 }
 
@@ -48,7 +50,9 @@ export class MobilePayPayment implements PaymentMethod {
 
   pay(amount: number): PaymentResult {
     // 힌트: CreditCardPayment와 같은 검증 규칙, receipt 접두사만 [모바일페이]로.
-    throw new Error('TODO: MobilePayPayment.pay 를 구현하라');
+    if (amount <= 0)
+      return { success: false, receipt: '결제 금액이 올바르지 않습니다' }
+    return { success: true, receipt: `[모바일페이] ${amount}원 결제 완료` }
   }
 }
 
@@ -62,20 +66,27 @@ export class PointPayment implements PaymentMethod {
   readonly name: string = 'point';
 
   // 힌트: 파라미터 프로퍼티 축약으로 balance를 받아라. (stage1에서 배운 그 문법)
-  constructor(private balance: number) {}
+  constructor(private balance: number) { }
 
   pay(amount: number): PaymentResult {
+    if (amount <= 0)
+      return { success: false, receipt: '결제 금액이 올바르지 않습니다' }
+    else if (amount > this.balance)
+      return { success: false, receipt: `포인트가 부족합니다 (보유 ${this.balance}, 요청 ${amount})` }
+    this.balance -= amount;
+    return {
+      success: true, receipt: `[포인트] ${amount}원 결제 완료`
+    }
     // 힌트:
     // - amount가 0 이하이면 실패, receipt:'결제 금액이 올바르지 않습니다'.
     // - amount가 balance보다 크면 실패, receipt:`포인트가 부족합니다 (보유 ${balance}, 요청 ${amount})`.
     // - 그 외에는 balance를 amount만큼 차감하고 성공, receipt:`[포인트] ${amount}원 결제 완료`.
-    throw new Error('TODO: PointPayment.pay 를 구현하라');
   }
 
   /** 남은 포인트 잔액 (테스트에서 차감을 확인한다) */
   getBalance(): number {
+    return this.balance
     // 힌트: 현재 balance를 반환.
-    throw new Error('TODO: PointPayment.getBalance 를 구현하라');
   }
 }
 
