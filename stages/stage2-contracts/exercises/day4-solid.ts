@@ -39,8 +39,7 @@ export class NoDiscount implements DiscountPolicy {
   readonly name: string = 'none';
 
   discountAmount(subtotal: number): number {
-    // 힌트: 언제나 0을 반환.
-    throw new Error('TODO: NoDiscount.discountAmount 를 구현하라');
+    return 0
   }
 }
 
@@ -49,11 +48,11 @@ export class RateDiscount implements DiscountPolicy {
   readonly name: string = 'rate';
 
   // 힌트: 파라미터 프로퍼티로 rate를 받아라 (예: 0.1 => 10% 할인).
-  constructor(private readonly rate: number) {}
+  constructor(private readonly rate: number) { }
 
   discountAmount(subtotal: number): number {
     // 힌트: Math.floor(subtotal * this.rate) 반환.
-    throw new Error('TODO: RateDiscount.discountAmount 를 구현하라');
+    return Math.floor(subtotal * this.rate)
   }
 }
 
@@ -65,11 +64,12 @@ export class VipDiscount implements DiscountPolicy {
   readonly name: string = 'vip';
 
   // 힌트: 상한 cap을 파라미터 프로퍼티로 받아라.
-  constructor(private readonly cap: number) {}
+  constructor(private readonly cap: number) { }
 
   discountAmount(subtotal: number): number {
     // 힌트: raw = Math.floor(subtotal * 0.2); return Math.min(raw, this.cap);
-    throw new Error('TODO: VipDiscount.discountAmount 를 구현하라');
+    const cost = Math.floor(subtotal * 0.2)
+    return Math.min(cost, this.cap)
   }
 }
 
@@ -79,13 +79,15 @@ export class VipDiscount implements DiscountPolicy {
  */
 export class PriceCalculator {
   // 힌트: DiscountPolicy를 주입받아라 (구체 타입 금지, 인터페이스로).
-  constructor(private readonly policy: DiscountPolicy) {}
+  constructor(private readonly policy: DiscountPolicy) { }
 
   /** 최종 결제액 = subtotal - 할인액. 음수면 0으로 막는다. */
   finalPrice(subtotal: number): number {
-    // 힌트: const discounted = subtotal - this.policy.discountAmount(subtotal);
-    //       return Math.max(discounted, 0);
-    throw new Error('TODO: PriceCalculator.finalPrice 를 구현하라');
+    const final_cost = subtotal - this.policy.discountAmount(subtotal);
+    if (final_cost < 0)
+      return 0
+    else
+      return final_cost
   }
 }
 
@@ -110,7 +112,13 @@ export class OrderValidator {
   validate(order: Order): ValidationResult {
     // 힌트: errors 배열을 만들고 두 규칙을 검사한 뒤,
     //       { valid: errors.length === 0, errors } 반환.
-    throw new Error('TODO: OrderValidator.validate 를 구현하라');
+    const errors = [];
+    if (order.price <= 0)
+      errors.push('단가는 0보다 커야 합니다')
+    if (order.quantity <= 0)
+      errors.push('수량은 0보다 커야 합니다')
+
+    return { valid: errors.length === 0, errors: errors }
   }
 }
 
@@ -129,10 +137,15 @@ export class OrderProcessor {
   constructor(
     private readonly validator: OrderValidator,
     private readonly calculator: PriceCalculator,
-  ) {}
+  ) { }
 
   process(order: Order): number {
     // 힌트: 위 1~3 순서대로 구현하라.
-    throw new Error('TODO: OrderProcessor.process 를 구현하라');
+    const validation = this.validator.validate(order);
+    if (validation.valid === false)
+      throw new Error(`유효하지 않은 주문: ${validation.errors.join(', ')}`)
+    const subtotal = order.price * order.quantity;
+    const total = this.calculator.finalPrice(subtotal);
+    return total
   }
 }

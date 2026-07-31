@@ -17,10 +17,10 @@
 
 - [x] Day 1: interface / implements — [일지](journal/2026-07-30-stage2-day1.md)
 - [x] Day 2: 추상 클래스 — [일지](journal/2026-07-30-stage2-day2.md)
-- [ ] Day 3: 상속 vs 조합 —
-- [ ] Day 4: SOLID —
-- [ ] Day 5: 종합 문제 —
-- [ ] **스테이지 완료** (`npm run check:stage2` 통과 확인)
+- [x] Day 3: 상속 vs 조합 — [일지](journal/2026-07-31-stage2-day3.md)
+- [x] Day 4: SOLID — [일지](journal/2026-07-31-stage2-day4.md)
+- [x] Day 5: 종합 문제 — [일지](journal/2026-07-31-stage2-day5.md)
+- [x] **스테이지 완료** (`npm run check:stage2` 25/25 통과 — 2026-07-31)
 
 ## 스테이지 3 — 제네릭 클래스 (3주차)
 

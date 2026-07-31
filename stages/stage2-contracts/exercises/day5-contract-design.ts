@@ -51,8 +51,7 @@ export interface CheckoutResult {
  */
 export class AlwaysOkGateway implements PaymentGateway {
   charge(amount: number): boolean {
-    // 힌트: 언제나 true 반환. (amount는 이 구현에선 쓰지 않아도 된다)
-    throw new Error('TODO: AlwaysOkGateway.charge 를 구현하라');
+    return true
   }
 }
 
@@ -62,11 +61,12 @@ export class AlwaysOkGateway implements PaymentGateway {
  */
 export class LimitedGateway implements PaymentGateway {
   // 힌트: limit을 파라미터 프로퍼티로 받아라.
-  constructor(private readonly limit: number) {}
+  constructor(private readonly limit: number) { }
 
   charge(amount: number): boolean {
-    // 힌트: amount <= this.limit 이면 true, 아니면 false.
-    throw new Error('TODO: LimitedGateway.charge 를 구현하라');
+    if (amount > this.limit)
+      return false
+    return true
   }
 }
 
@@ -77,16 +77,15 @@ export class LimitedGateway implements PaymentGateway {
  */
 export class InMemoryInventory implements InventoryRepository {
   // 힌트: 주입받은 초기값을 내부 Map/객체에 보관하라.
-  constructor(private readonly stock: Record<string, number>) {}
+  constructor(private readonly stock: Record<string, number>) { }
 
   getStock(productId: string): number {
     // 힌트: this.stock[productId]가 없으면 0을 반환 (?? 사용).
-    throw new Error('TODO: InMemoryInventory.getStock 를 구현하라');
+    return this.stock[productId] ?? 0
   }
 
   reduceStock(productId: string, qty: number): void {
-    // 힌트: 현재 재고에서 qty를 빼서 다시 저장하라 (getStock 재사용 가능).
-    throw new Error('TODO: InMemoryInventory.reduceStock 를 구현하라');
+    this.stock[productId] -= qty
   }
 }
 
@@ -99,13 +98,13 @@ export class CollectingNotifier implements Notifier {
 
   notify(message: string): void {
     // 힌트: 배열에 push.
-    throw new Error('TODO: CollectingNotifier.notify 를 구현하라');
+    this.sent.push(message)
   }
 
   /** 지금까지 보낸 메시지 목록 (복사본) */
   getSent(): string[] {
     // 힌트: [...sent] 반환.
-    throw new Error('TODO: CollectingNotifier.getSent 를 구현하라');
+    return [...this.sent]
   }
 }
 
@@ -130,11 +129,18 @@ export class CheckoutService {
     private readonly gateway: PaymentGateway,
     private readonly inventory: InventoryRepository,
     private readonly notifier: Notifier,
-  ) {}
+  ) { }
 
   checkout(req: CheckoutRequest): CheckoutResult {
     // 힌트: 위 주석의 1→2→3 순서를 그대로 코드로 옮겨라.
     //       각 단계의 "이후 동작 없음"(early return)을 지키는 게 핵심이다.
-    throw new Error('TODO: CheckoutService.checkout 를 구현하라');
+    if (this.inventory.getStock(req.productId) < req.quantity)
+      return { success: false, reason: '재고 부족' }
+    if (this.gateway.charge(req.unitPrice * req.quantity) == false)
+      return { success: false, reason: '결제 실패' }
+    this.inventory.reduceStock(req.productId, req.quantity);
+    this.notifier.notify(`결제 완료: ${req.productId} x${req.quantity} = ${req.unitPrice * req.quantity}원`)
+    return { success: true, reason: '주문 완료' }
+
   }
 }

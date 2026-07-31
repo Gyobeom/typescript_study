@@ -25,14 +25,12 @@ export class InMemoryLogger implements Logger {
   private messages: string[] = [];
 
   log(message: string): void {
-    // 힌트: messages에 message를 push.
-    throw new Error('TODO: InMemoryLogger.log 를 구현하라');
+    this.messages.push(message)
   }
 
   /** 지금까지 쌓인 로그를 (복사본으로) 반환 */
   getMessages(): string[] {
-    // 힌트: 내부 배열을 그대로 넘기지 말고 [...messages]로 복사해 반환.
-    throw new Error('TODO: InMemoryLogger.getMessages 를 구현하라');
+    return [...this.messages]
   }
 }
 
@@ -55,10 +53,16 @@ export interface Notification {
 export class NotificationService {
   // 힌트: 파라미터 프로퍼티 축약으로 Logger를 private readonly logger 로 주입받아라.
   //       (구체 클래스 InMemoryLogger가 아니라 Logger 인터페이스 타입으로 받는 게 핵심)
-  constructor(private readonly logger: Logger) {}
+  constructor(private readonly logger: Logger) { }
 
   send(n: Notification): boolean {
     // 힌트: 위 주석의 1~3 순서대로 this.logger.log(...)를 호출하고 boolean을 반환하라.
-    throw new Error('TODO: NotificationService.send 를 구현하라');
+    this.logger.log(`알림 전송 시도: ${n.to}`);
+    if (n.to == '') {
+      this.logger.log('전송 실패: 수신자 없음')
+      return false
+    }
+    this.logger.log(`전송 완료: ${n.to} - ${n.body}`)
+    return true
   }
 }
