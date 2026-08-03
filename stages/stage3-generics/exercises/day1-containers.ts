@@ -16,30 +16,30 @@ export class Stack<T> {
   /** 값을 스택 맨 위에 넣는다. */
   push(item: T): void {
     // 힌트: 배열 끝에 붙이면 그게 "맨 위"다.
-    throw new Error('TODO: Stack.push 를 구현하세요');
+    this.items.push(item);
   }
 
   /** 맨 위 값을 꺼내 반환한다. 비어 있으면 undefined. */
   pop(): T | undefined {
     // 힌트: 배열 끝에서 하나 빼는 메서드가 있다.
-    throw new Error('TODO: Stack.pop 을 구현하세요');
+    return this.items.pop();
   }
 
   /** 맨 위 값을 꺼내지 않고 들여다본다. 비어 있으면 undefined. */
   peek(): T | undefined {
     // 힌트: 마지막 인덱스는 length - 1 이다.
-    throw new Error('TODO: Stack.peek 를 구현하세요');
+    return this.items[this.items.length - 1];
   }
 
   /** 현재 담긴 원소 개수. */
   get size(): number {
     // 힌트: 배열 length를 그대로 노출하면 된다.
-    throw new Error('TODO: Stack.size 를 구현하세요');
+    return this.items.length;
   }
 
   /** 비어 있으면 true. */
   isEmpty(): boolean {
-    throw new Error('TODO: Stack.isEmpty 를 구현하세요');
+    return this.items.length == 0;
   }
 }
 
@@ -50,27 +50,27 @@ export class Queue<T> {
   /** 값을 큐 뒤에 넣는다. */
   enqueue(item: T): void {
     // 힌트: 뒤에 붙인다.
-    throw new Error('TODO: Queue.enqueue 를 구현하세요');
+    this.items.push(item);
   }
 
   /** 큐 앞에서 값을 꺼내 반환한다. 비어 있으면 undefined. */
   dequeue(): T | undefined {
     // 힌트: 배열 앞에서 하나 빼는 메서드가 있다(shift).
-    throw new Error('TODO: Queue.dequeue 를 구현하세요');
+    return this.items.shift();
   }
 
   /** 다음에 나올 값(맨 앞)을 들여다본다. 비어 있으면 undefined. */
   front(): T | undefined {
-    throw new Error('TODO: Queue.front 를 구현하세요');
+    return this.items[0];
   }
 
   /** 현재 담긴 원소 개수. */
   get size(): number {
-    throw new Error('TODO: Queue.size 를 구현하세요');
+    return this.items.length;
   }
 
   /** 비어 있으면 true. */
   isEmpty(): boolean {
-    throw new Error('TODO: Queue.isEmpty 를 구현하세요');
+    return this.items.length == 0;
   }
 }
