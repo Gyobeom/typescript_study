@@ -17,19 +17,23 @@ export class LengthTracker<T extends { length: number }> {
   /** 원소를 추가한다. */
   add(item: T): void {
     // 힌트: 그냥 배열에 넣으면 된다. 타입 제약은 이미 시그니처가 보장한다.
-    throw new Error('TODO: LengthTracker.add 를 구현하세요');
+    this.items.push(item);
   }
 
   /** 담긴 모든 원소의 length 합계. */
   totalLength(): number {
     // 힌트: 각 원소의 .length 를 더한다. reduce가 편하다.
-    throw new Error('TODO: LengthTracker.totalLength 를 구현하세요');
+    return this.items.reduce((sum, item) => { return sum + item.length }, 0)
   }
 
   /** length가 가장 큰 원소. 비어 있으면 undefined. */
   longest(): T | undefined {
+    if (this.items.length === 0)
+      return undefined
     // 힌트: 최댓값 비교. 비어 있으면 undefined를 반환한다.
-    throw new Error('TODO: LengthTracker.longest 를 구현하세요');
+    return this.items.reduce((acc, cur) => {
+      return cur.length > acc.length ? cur : acc;
+    });
   }
 }
 
@@ -38,21 +42,24 @@ export class LengthTracker<T extends { length: number }> {
  * 존재하지 않는 키로 pluck을 호출하면 컴파일 에러가 나야 한다.
  */
 export class PropertyPicker<T extends object> {
-  constructor(private readonly source: T) {}
+  constructor(private readonly source: T) { }
 
   /**
    * source에서 key에 해당하는 값을 꺼낸다.
    * K는 T의 실제 키로 제약되고, 반환 타입은 T[K]다.
    */
   pluck<K extends keyof T>(key: K): T[K] {
-    // 힌트: source[key] 를 반환하면 타입이 정확히 T[K]로 맞는다.
-    throw new Error('TODO: PropertyPicker.pluck 을 구현하세요');
+    return this.source[key];
   }
 
   /** 여러 키를 골라 부분 객체를 만든다. 반환 타입은 Pick<T, K>. */
   pick<K extends keyof T>(keys: K[]): Pick<T, K> {
     // 힌트: 빈 객체에서 시작해 keys를 돌며 source[key]를 복사한다.
     //       결과를 Pick<T, K>로 단언(as)해도 좋다.
-    throw new Error('TODO: PropertyPicker.pick 을 구현하세요');
+    const out = {} as Pick<T, K>;
+    for (const k of keys) {
+      out[k] = this.source[k];
+    }
+    return out;
   }
 }

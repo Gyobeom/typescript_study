@@ -25,7 +25,7 @@
 ## 스테이지 3 — 제네릭 클래스 (3주차)
 
 - [x] Day 1: 제네릭 기초 — [일지](journal/2026-08-03-stage3-day1.md)
-- [ ] Day 2: 제네릭 제약 —
+- [x] Day 2: 제네릭 제약 — [일지](journal/2026-08-03-stage3-day2.md)
 - [ ] Day 3: 제네릭 + 인터페이스 —
 - [ ] Day 4: Repository&lt;T&gt; —
 - [ ] Day 5: 종합 문제 —
