@@ -26,20 +26,18 @@ export class InMemoryRepository<T extends Entity> {
    * 저장한 엔티티를 그대로 반환한다.
    */
   save(entity: T): T {
-    // 힌트: store.set(entity.id, entity) 후 entity를 반환한다.
-    throw new Error('TODO: save 를 구현하세요');
+    this.store.set(entity.id, entity);
+    return entity
   }
 
   /** id로 하나 찾는다. 없으면 undefined. */
   findById(id: string): T | undefined {
-    // 힌트: Map.get 이 없으면 undefined를 준다.
-    throw new Error('TODO: findById 를 구현하세요');
+    return this.store.get(id);
   }
 
   /** 저장된 모든 엔티티를 배열로 반환한다(내부 저장소 노출 금지). */
   findAll(): T[] {
-    // 힌트: [...store.values()] 로 사본 배열을 만든다.
-    throw new Error('TODO: findAll 을 구현하세요');
+    return [...this.store.values()]
   }
 
   /**
@@ -47,13 +45,12 @@ export class InMemoryRepository<T extends Entity> {
    * 실제로 지웠으면 true, 대상이 없었으면 false를 반환한다.
    */
   delete(id: string): boolean {
-    // 힌트: Map.delete 의 반환값이 그대로 "지웠는지 여부"다.
-    throw new Error('TODO: delete 를 구현하세요');
+    return this.store.delete(id);
   }
 
   /** 저장된 엔티티 개수. */
   count(): number {
     // 힌트: Map.size.
-    throw new Error('TODO: count 를 구현하세요');
+    return this.store.size;
   }
 }
