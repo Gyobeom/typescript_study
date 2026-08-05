@@ -12,6 +12,7 @@
 - [ ] Day 4: static —
 - [ ] Day 5: 종합 문제 —
 - [ ] **스테이지 완료** (`npm run check:stage1` 통과 확인)
+- [ ] 복습: `npm run review:stage1` 통과 (힌트 제로 종합 문제)
 
 ## 스테이지 2 — 계약 설계 (2주차)
 
@@ -21,6 +22,7 @@
 - [ ] Day 4: SOLID —
 - [ ] Day 5: 종합 문제 —
 - [ ] **스테이지 완료** (`npm run check:stage2` 통과 확인)
+- [ ] 복습: `npm run review:stage2` 통과 (힌트 제로 종합 문제)
 
 ## 스테이지 3 — 제네릭 클래스 (3주차)
 
@@ -30,6 +32,7 @@
 - [ ] Day 4: Repository&lt;T&gt; —
 - [ ] Day 5: 종합 문제 —
 - [ ] **스테이지 완료** (`npm run check:stage3` 통과 확인)
+- [ ] 복습: `npm run review:stage3` 통과 (힌트 제로 종합 문제)
 
 ## 스테이지 4 — 데코레이터와 DI (4주차)
 
@@ -38,6 +41,7 @@
 - [ ] Day 3: reflect-metadata —
 - [ ] Day 4~5: 미니 DI 컨테이너 —
 - [ ] **스테이지 완료** (`npm run check:stage4` 통과 확인)
+- [ ] 복습: `npm run review:stage4` 통과 (힌트 제로 종합 문제)
 
 ## 스테이지 5 — NestJS 미니 프로젝트 (5주차)
 
@@ -47,3 +51,4 @@
 - [ ] Day 4: 예외 처리 —
 - [ ] Day 5: e2e + 부팅 —
 - [ ] **스테이지 완료** (`npm run check:stage5` 통과 + 부팅 확인)
+- [ ] 복습: `npm run review:stage5` 통과 (힌트 제로 종합 문제)
