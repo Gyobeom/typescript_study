@@ -14,6 +14,41 @@
 
 ## 개념 설명
 
+### 0. 왜 데코레이터가 존재하는가 — 문제부터
+
+여러 클래스에 **본질 로직과 무관한 공통 부가 작업**을 붙여야 하는 상황을 상상하자: "이 클래스들을 라우터에 등록해라", "이 클래스에 'cache'라는 꼬리표를 달아라", "이 클래스는 컨테이너가 관리한다고 표시해라".
+
+**방법 1 — 각 클래스 본문에 코드를 넣는다:**
+
+```typescript
+class UserController {
+  constructor() { router.register('users', this); } // 본질 로직이 아닌 코드가 침입
+}
+```
+
+클래스마다 같은 코드가 중복되고, "이 클래스가 무엇인가"(본질)와 "이 클래스를 어떻게 취급하는가"(부가 관심사)가 섞인다.
+
+**방법 2 — 클래스를 함수에 넘겨 바깥에서 가공한다:** JS/TS에서 클래스는 **값**이다(변수에 담기고, 인자로 넘어간다). 그러니 "클래스를 받아 가공하는 함수"를 만들 수 있다:
+
+```typescript
+function registerAs(path: string, target: Function) {
+  router.register(path, target);
+}
+class UserController {}
+registerAs('users', UserController); // 클래스 본문은 깨끗, 가공은 바깥에서
+```
+
+동작은 하지만 선언(`class UserController`)과 가공(`registerAs(...)`)이 **떨어져 있어** 파일이 커지면 놓치기 쉽다.
+
+**데코레이터 = 방법 2를 선언부에 붙이는 문법.** "클래스를 받아 가공하는 함수"를 클래스 선언 **바로 위에** `@`로 붙이면, 언어가 클래스 정의 직후 그 함수를 자동 호출해 준다:
+
+```typescript
+@RegisterAs('users')   // 선언만 봐도 이 클래스의 성격이 읽힌다
+class UserController {}
+```
+
+정리 — **데코레이터란: 선언(클래스 등)을 인자로 받아 ① 검사하거나 ② 정보를 심거나 ③ 수정·교체하는 함수**이고, `@`는 "이 함수를 이 선언에 적용하라"는 자동 호출 문법이다. 이득은 세 가지: 본질 로직과 부가 관심사의 **분리**, 선언부만 읽어도 성격이 보이는 **선언적 표현**, 같은 가공의 **재사용**. NestJS가 `@Controller`, `@Injectable`, `@Get`으로 프레임워크 전체를 이 방식 위에 세운 이유다.
+
 ### 1. 데코레이터는 그냥 함수다
 
 데코레이터를 처음 보면 "특별한 문법"처럼 보이지만, 본질은 **선언(클래스/메서드/…)을 인자로 받아 무언가 하는 함수**다. `@` 기호는 "이 함수를 이 선언에 적용하라"는 **문법 설탕(syntactic sugar)**일 뿐이다.
@@ -86,14 +121,28 @@ function Tag(label: string): ClassDecorator {
 class RedisStore {}
 ```
 
-실행 순서를 손으로 풀면:
+실행 순서를 손으로 풀면 **함수 호출이 두 번** 일어난다:
 
 ```typescript
-const decorator = Tag('cache'); // 팩토리 호출 → 데코레이터 함수 반환
-decorator(RedisStore);          // 그 데코레이터를 클래스에 적용
+const decorator = Tag('cache'); // ① 팩토리 호출: label='cache'를 기억(클로저)하는
+                                //    "데코레이터 함수"가 만들어져 변수에 담긴다
+decorator(RedisStore);          // ② 그 함수에 클래스를 인자로 전달
+                                //    → 본문이 실행되어 RedisStore.__tag__ = 'cache'
 ```
 
-즉 `@` 뒤에 **함수 호출**(`Tag(...)`)이 오면, 그건 팩토리라는 신호다. "괄호가 붙으면 팩토리, 안 붙으면 그냥 데코레이터"로 외워두면 편하다.
+②가 가능한 이유: **클래스도 값이기 때문**이다(섹션 0). `RedisStore`라는 이름은 "생성자 함수"라는 값을 가리키고, 값이니까 여느 인자처럼 함수에 넘길 수 있다. `decorator`의 파라미터 `constructor`가 그 순간 `RedisStore`를 받는다.
+
+단계별 전체 흐름을 시간순으로 다시 추적하면:
+
+```
+@Tag('cache') class RedisStore {} 를 만나면 —
+t1. Tag('cache') 실행                → label='cache'가 클로저에 저장된 새 함수 F 반환
+t2. class RedisStore 정의 완료       → RedisStore = 생성자 함수(값)
+t3. F(RedisStore) 자동 호출          → F 본문 실행: RedisStore.__tag__ = 'cache'
+t4. 이후 getTagOf(RedisStore)        → 'cache' (심어둔 정보를 읽음)
+```
+
+`@` 없이 위 과정을 전부 손으로 써도(①→②) **완전히 같은 결과**다 — 함정 4번 참조. 즉 `@` 뒤에 **함수 호출**(`Tag(...)`)이 오면, 그건 팩토리라는 신호다. "괄호가 붙으면 팩토리, 안 붙으면 그냥 데코레이터"로 외워두면 편하다.
 
 ### 5. 심기 → 읽기의 왕복
 
