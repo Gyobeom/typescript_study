@@ -26,7 +26,7 @@
 
 - [x] Day 1: 제네릭 기초 — [일지](journal/2026-08-03-stage3-day1.md)
 - [x] Day 2: 제네릭 제약 — [일지](journal/2026-08-03-stage3-day2.md)
-- [ ] Day 3: 제네릭 + 인터페이스 —
+- [x] Day 3: 제네릭 + 인터페이스 — [일지](journal/2026-08-03-stage3-day3.md)
 - [x] Day 4: Repository&lt;T&gt; — [일지](journal/2026-08-03-stage3-day4.md)
 - [ ] Day 5: 종합 문제 —
 - [ ] **스테이지 완료** (`npm run check:stage3` 통과 확인)

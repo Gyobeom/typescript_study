@@ -31,26 +31,27 @@ export class SortedCollection<T extends Comparable<T>> {
    * (간단하게: 넣고 정렬해도 되고, 올바른 위치에 삽입해도 된다.)
    */
   add(item: T): void {
+    this.items.push(item);
+    this.items.sort((a, b) => a.compareTo(b))
     // 힌트: this.items.push 후 this.items.sort((a, b) => a.compareTo(b)) 면 충분하다.
-    throw new Error('TODO: SortedCollection.add 를 구현하세요');
   }
 
   /** 정렬된 순서 그대로의 배열 사본을 반환한다(내부 배열 노출 금지). */
   toArray(): T[] {
+    return [...this.items]
     // 힌트: 스프레드([...])로 사본을 만들어 반환한다.
-    throw new Error('TODO: SortedCollection.toArray 를 구현하세요');
   }
 
   /** 가장 작은 값. 비어 있으면 undefined. */
   min(): T | undefined {
     // 힌트: 오름차순이므로 맨 앞이 최솟값이다.
-    throw new Error('TODO: SortedCollection.min 을 구현하세요');
+    return this.items[0]
   }
 
   /** 가장 큰 값. 비어 있으면 undefined. */
   max(): T | undefined {
     // 힌트: 오름차순이므로 맨 뒤가 최댓값이다.
-    throw new Error('TODO: SortedCollection.max 를 구현하세요');
+    return this.items[this.items.length - 1]
   }
 }
 
@@ -59,10 +60,11 @@ export class SortedCollection<T extends Comparable<T>> {
  * 돈(금액)을 감싸 금액 크기로 비교한다.
  */
 export class Money implements Comparable<Money> {
-  constructor(public readonly amount: number) {}
+  constructor(public readonly amount: number) { }
 
   compareTo(other: Money): number {
     // 힌트: amount 차이를 반환하면 정렬 비교자로 그대로 쓸 수 있다.
-    throw new Error('TODO: Money.compareTo 를 구현하세요');
+    if (this.amount !== other.amount) return this.amount - other.amount;
+    return this.amount - other.amount;
   }
 }
