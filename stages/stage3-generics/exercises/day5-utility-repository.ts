@@ -10,6 +10,8 @@
 // ★ 오늘은 일부 "시그니처"도 직접 작성한다. 아래 TODO(SIGNATURE) 주석을 보고
 //   메서드 선언부(파라미터·반환 타입)까지 스스로 채워라. 본문은 그 다음이다.
 
+import { create } from "domain";
+
 /** id로 식별 가능한 엔티티의 최소 계약. */
 export interface Entity {
   id: string;
@@ -51,7 +53,12 @@ export class UpdatableRepository<T extends Entity> {
     //   1) findById로 기존 엔티티를 찾는다. 없으면 undefined.
     //   2) { ...existing, ...patch, id: existing.id } 로 병합해 id를 지킨다.
     //   3) save로 다시 저장하고 반환한다.
-    throw new Error('TODO: update 를 구현하세요');
+    const existing = this.findById(id);
+    if (existing) {
+      const updatedStore = { ...existing, ...patch, id: existing.id }
+      return this.save(updatedStore)
+    } else
+      return existing
   }
 
   /**
@@ -65,7 +72,9 @@ export class UpdatableRepository<T extends Entity> {
     // 힌트:
     //   findAll()을 돌며, criteria의 모든 키에 대해 entity[key] === criteria[key] 인 것만 남긴다.
     //   Object.keys(criteria) 를 (keyof T)[] 로 단언해 순회하면 편하다.
-    throw new Error('TODO: findWhere 를 구현하세요');
+    const keys = Object.keys(criteria) as (keyof T)[];
+
+    return this.findAll().filter(entity => keys.every(key => entity[key] === criteria[key]))
   }
 
   count(): number {
